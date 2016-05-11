@@ -1,6 +1,6 @@
 <?php
 
-namespace Addons\WeiSite\Model;
+namespace Addons\\Model;
 
 use Think\Model;
 

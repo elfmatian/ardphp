@@ -1,5 +1,5 @@
 @charset "utf-8";
-/* CSS Document by jacy use in weisite */
+/* CSS Document by jacy use in WeiBbs */
 .bottom_nav_blank{ height:50px; width:100%;}
 .bottom_nav{ height:50px; width:100%; background:#c50303; display:block; position:fixed; bottom:0; left:0; right:0; z-index:1000;}
 .bottom_nav .nav{display:-webkit-box; height:50px; float:left;}

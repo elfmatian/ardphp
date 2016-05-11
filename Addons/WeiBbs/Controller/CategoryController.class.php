@@ -1,8 +1,8 @@
 <?php
 
-namespace Addons\WeiSite\Controller;
+namespace Addons\\Controller;
 
-use Addons\WeiSite\Controller\BaseController;
+use Addons\\Controller\BaseController;
 
 class CategoryController extends BaseController {
 	var $model;

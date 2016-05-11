@@ -1,8 +1,8 @@
 <?php
 
-namespace Addons\WeiSite\Controller;
+namespace Addons\\Controller;
 
-use Addons\WeiSite\Controller\BaseController;
+use Addons\\Controller\BaseController;
 
 class FooterController extends BaseController {
 	var $model;
@@ -29,7 +29,7 @@ class FooterController extends BaseController {
 		$this->display ();
 	}
 	function get_data($map) {
-		$list = D ( 'Addons://WeiSite/Footer' )->get_list ( $map );
+		$list = D ( 'Addons://WeiBbs/Footer' )->get_list ( $map );
 		
 		// 取一级菜单
 		foreach ( $list as $k => $vo ) {

@@ -1,7 +1,7 @@
 <?php
 
-namespace Addons\WeiSite\Controller;
-use Addons\WeiSite\Controller\BaseController;
+namespace Addons\\Controller;
+use Addons\\Controller\BaseController;
 
 class LeafletsController extends BaseController{
 	//首页

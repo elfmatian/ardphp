@@ -1,6 +1,6 @@
 <?php
 
-namespace Addons\WeiSite\Model;
+namespace Addons\\Model;
 
 use Home\Model\WeixinModel;
 
@@ -21,7 +21,7 @@ class WeixinAddonModel extends WeixinModel {
 			// 组装用户在微信里点击图文的时跳转URL
 			$param ['id'] = $info ['id'];
 			//$url = addons_url ( 'CustomReply://CustomReply/detail', $param );
-			$url = addons_url('WeiSite://WeiSite/detail',$param);
+			$url = addons_url('WeiBbs://WeiBbs/detail',$param);
 			// 组装微信需要的图文数据，格式是固定的
 			$articles [0] = array (
 					'Title' => $info ['title'],
@@ -30,9 +30,9 @@ class WeixinAddonModel extends WeixinModel {
 					'Url' => $url 
 			);
 		} else {
-			$config = getAddonConfig ( 'WeiSite' ); // 获取后台插件的配置参数
+			$config = getAddonConfig ( 'WeiBbs' ); // 获取后台插件的配置参数
 			
-			$url = addons_url ( 'WeiSite://WeiSite/index', $param );
+			$url = addons_url ( 'WeiBbs://WeiBbs/index', $param );
 			
 			// 组装微信需要的图文数据，格式是固定的
 			$articles [0] = array (

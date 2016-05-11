@@ -1,10 +1,10 @@
 <?php
 
-namespace Addons\WeiSite\Controller;
+namespace Addons\\Controller;
 
-use Addons\WeiSite\Controller\BaseController;
+use Addons\\Controller\BaseController;
 
-class WeiSiteController extends BaseController {
+class Controller extends BaseController {
 	function config() {
 		// 使用提示
 		$publicid = get_token_appinfo('','id');
@@ -26,11 +26,11 @@ class WeiSiteController extends BaseController {
 	}
 	// 首页
 	function index() {
-		add_credit ( 'weisite', 86400 );
+		add_credit ( 'WeiBbs', 86400 );
 		
-		if (file_exists ( ONETHINK_ADDON_PATH . 'WeiSite/View/default/pigcms/Index_' . $this->config ['template_index'] . '.html' )) {
+		if (file_exists ( ONETHINK_ADDON_PATH . 'WeiBbs/View/default/pigcms/Index_' . $this->config ['template_index'] . '.html' )) {
 			$this->pigcms_index ();
-			$this->display ( ONETHINK_ADDON_PATH . 'WeiSite/View/default/pigcms/Index_' . $this->config ['template_index'] . '.html' );
+			$this->display ( ONETHINK_ADDON_PATH . 'WeiBbs/View/default/pigcms/Index_' . $this->config ['template_index'] . '.html' );
 		} else {
 			$map ['token'] = get_token ();
 			$map ['is_show'] = 1;
@@ -48,7 +48,7 @@ class WeiSiteController extends BaseController {
 			$category = M ( 'weisite_category' )->where ( $map )->order ( 'sort asc, id desc' )->select ();
 			foreach ( $category as &$vo ) {
 				$vo ['icon'] = get_cover_url ( $vo ['icon'] );				
-				empty ( $vo ['url'] ) && $vo ['url'] = addons_url ( 'WeiSite://WeiSite/lists', array (
+				empty ( $vo ['url'] ) && $vo ['url'] = addons_url ( 'WeiBbs://WeiBbs/lists', array (
 						'cate_id' => $vo ['id'] 
 				) );
 			}
@@ -62,7 +62,7 @@ class WeiSiteController extends BaseController {
 			
 			$this->_footer ();
 			
-			$this->display ( ONETHINK_ADDON_PATH . 'WeiSite/View/default/TemplateIndex/' . $this->config ['template_index'] . '/index.html' );
+			$this->display ( ONETHINK_ADDON_PATH . 'WeiBbs/View/default/TemplateIndex/' . $this->config ['template_index'] . '/index.html' );
 		}
 	}
 	// 分类列表
@@ -70,9 +70,9 @@ class WeiSiteController extends BaseController {
 		$cate_id = I ( 'cate_id', 0, 'intval' );
 		empty ( $cate_id ) && $cate_id = I ( 'classid', 0, 'intval' );
 		
-		if (file_exists ( ONETHINK_ADDON_PATH . 'WeiSite/View/default/pigcms/Index_' . $this->config ['template_lists'] . '.html' )) {
+		if (file_exists ( ONETHINK_ADDON_PATH . 'WeiBbs/View/default/pigcms/Index_' . $this->config ['template_lists'] . '.html' )) {
 			$this->pigcms_lists ( $cate_id );
-			$this->display ( ONETHINK_ADDON_PATH . 'WeiSite/View/default/pigcms/Index_' . $this->config ['template_lists'] . '.html' );
+			$this->display ( ONETHINK_ADDON_PATH . 'WeiBbs/View/default/pigcms/Index_' . $this->config ['template_lists'] . '.html' );
 		} else {
 			$map ['token'] = get_token ();
 			if ($cate_id) {
@@ -85,13 +85,13 @@ class WeiSiteController extends BaseController {
 			if (! empty ( $category )) {
 				foreach ( $category as &$vo ) {
 					$vo ['icon'] = get_cover_url ( $vo ['icon'] );
-					empty ( $vo ['url'] ) && $vo ['url'] = addons_url ( 'WeiSite://WeiSite/lists', array (
+					empty ( $vo ['url'] ) && $vo ['url'] = addons_url ( 'WeiBbs://WeiBbs/lists', array (
 							'cate_id' => $vo ['id'] 
 					) );
 				}
 				$this->assign ( 'category', $category );
 				$this->_footer ();
-				$this->display ( ONETHINK_ADDON_PATH . 'WeiSite/View/default/TemplateSubcate/' . $this->config ['template_subcate'] . '/cate.html' );
+				$this->display ( ONETHINK_ADDON_PATH . 'WeiBbs/View/default/TemplateSubcate/' . $this->config ['template_subcate'] . '/cate.html' );
 			} else {
 				
 				$page = I ( 'p', 1, 'intval' );
@@ -112,15 +112,15 @@ class WeiSiteController extends BaseController {
 				// dump ( $list_data );
 				
 				$this->_footer ();
-				$this->display ( ONETHINK_ADDON_PATH . 'WeiSite/View/default/TemplateLists/' . $this->config ['template_lists'] . '/lists.html' );
+				$this->display ( ONETHINK_ADDON_PATH . 'WeiBbs/View/default/TemplateLists/' . $this->config ['template_lists'] . '/lists.html' );
 			}
 		}
 	}
 	// 详情
 	function detail() {
-		if (file_exists ( ONETHINK_ADDON_PATH . 'WeiSite/View/default/pigcms/Index_' . $this->config ['template_detail'] . '.html' )) {
+		if (file_exists ( ONETHINK_ADDON_PATH . 'WeiBbs/View/default/pigcms/Index_' . $this->config ['template_detail'] . '.html' )) {
 			$this->pigcms_detail ();
-			$this->display ( ONETHINK_ADDON_PATH . 'WeiSite/View/default/pigcms/Index_' . $this->config ['template_detail'] . '.html' );
+			$this->display ( ONETHINK_ADDON_PATH . 'WeiBbs/View/default/pigcms/Index_' . $this->config ['template_detail'] . '.html' );
 		} else {
 			$map ['id'] = I ( 'get.id', 0, 'intval' );
 			$info = M ( 'custom_reply_news' )->where ( $map )->find ();
@@ -129,7 +129,7 @@ class WeiSiteController extends BaseController {
 			M ( 'custom_reply_news' )->where ( $map )->setInc ( 'view_count' );
 			
 			$this->_footer ();
-			$this->display ( ONETHINK_ADDON_PATH . 'WeiSite/View/default/TemplateDetail/' . $this->config ['template_detail'] . '/detail.html' );
+			$this->display ( ONETHINK_ADDON_PATH . 'WeiBbs/View/default/TemplateDetail/' . $this->config ['template_detail'] . '/detail.html' );
 		}
 	}
 	
@@ -149,7 +149,7 @@ class WeiSiteController extends BaseController {
 			
 			$this->assign ( 'cateMenuFileName', $file );
 		} else {
-			$list = D ( 'Addons://WeiSite/Footer' )->get_list ();
+			$list = D ( 'Addons://WeiBbs/Footer' )->get_list ();
 			
 			if ($list) {
 				foreach ( $list as $k => $vo ) {
@@ -174,7 +174,7 @@ class WeiSiteController extends BaseController {
 				}
 				$this->assign ( 'footer', $one_arr );
 				
-				$html = $this->fetch ( ONETHINK_ADDON_PATH . 'WeiSite/View/default/TemplateFooter/' . $this->config ['template_footer'] . '/footer.html' );
+				$html = $this->fetch ( ONETHINK_ADDON_PATH . 'WeiBbs/View/default/TemplateFooter/' . $this->config ['template_footer'] . '/footer.html' );
 				$this->assign ( 'footer_html', $html );
 			} else {
 				$this->assign ( 'footer_html', '' );
@@ -208,19 +208,19 @@ class WeiSiteController extends BaseController {
 	 * 兼容小猪CMS模板
 	 *
 	 * 移植方法：
-	 * 1、把 tpl\static\tpl 目录下的所有文档复制到 weiphp的 Addons\WeiSite\View\default\pigcms 目录下
-	 * 2、把 tpl\Wap\default 目录下的所有文档也复制到 weiphp的 Addons\WeiSite\View\default\pigcms 目录下
-	 * 3、把 tpl\User\default\common\ 目录下的所有图片文件复制到 weiphp的 Addons\WeiSite\View\default\pigcms 目录下
-	 * 4、把 PigCms\Lib\ORG\index.Tpl.php 文件复制到 weiphp的 Addons\WeiSite\View\default\pigcms 目录下
-	 * 5、把pigcms 目录下所有文档代码里的 Wap/Index/lists 替换成 Home/Addons/execute?_addons=WeiSite&_controller=WeiSite&_action=lists
-	 * 6、把pigcms 目录下所有文档代码里的 Wap/Index/index 替换成 Home/Addons/execute?_addons=WeiSite&_controller=WeiSite&_action=index
+	 * 1、把 tpl\static\tpl 目录下的所有文档复制到 weiphp的 Addons\WeiBbs\View\default\pigcms 目录下
+	 * 2、把 tpl\Wap\default 目录下的所有文档也复制到 weiphp的 Addons\WeiBbs\View\default\pigcms 目录下
+	 * 3、把 tpl\User\default\common\ 目录下的所有图片文件复制到 weiphp的 Addons\WeiBbs\View\default\pigcms 目录下
+	 * 4、把 PigCms\Lib\ORG\index.Tpl.php 文件复制到 weiphp的 Addons\WeiBbs\View\default\pigcms 目录下
+	 * 5、把pigcms 目录下所有文档代码里的 Wap/Index/lists 替换成 Home/Addons/execute?_addons=WeiBbs&_controller=WeiBbs&_action=lists
+	 * 6、把pigcms 目录下所有文档代码里的 Wap/Index/index 替换成 Home/Addons/execute?_addons=WeiBbs&_controller=WeiBbs&_action=index
 	 */
 	function pigcms_init() {
 		// dump ( 'pigcms_init' );
 		C ( 'TMPL_L_DELIM', '{pigcms:' );
 		// C ( 'TMPL_FILE_DEPR', '_' );
 		
-		define ( 'RES', ONETHINK_ADDON_PATH . 'WeiSite/View/default/pigcms/common' );
+		define ( 'RES', ONETHINK_ADDON_PATH . 'WeiBbs/View/default/pigcms/common' );
 		
 		$public_info = get_token_appinfo ();
 		$manager = get_userinfo ( $public_info ['uid'] );
@@ -466,7 +466,7 @@ class WeiSiteController extends BaseController {
 		$count = count ( $category );
 		foreach ( $category as $k => $vo ) {
 			$param ['cate_id'] = $vo ['id'];
-			$url = empty ( $vo ['url'] ) ? $vo ['url'] = addons_url ( 'WeiSite://WeiSite/lists', $param ) : $vo ['url'];
+			$url = empty ( $vo ['url'] ) ? $vo ['url'] = addons_url ( 'WeiBbs://WeiBbs/lists', $param ) : $vo ['url'];
 			$pid = intval ( $vo ['pid'] );
 			$res [$pid] [$vo ['id']] = $this->_deal_cate ( $vo, $count - $k );
 		}
@@ -538,7 +538,7 @@ class WeiSiteController extends BaseController {
 	/* 预览 */
 	function preview(){
 		$publicid = get_token_appinfo('','id');
-	    $url = addons_url('WeiSite://WeiSite/index',array('publicid'=>$publicid));
+	    $url = addons_url('WeiBbs://WeiBbs/index',array('publicid'=>$publicid));
 	    $this->assign('url', $url);
 	    $this->display(SITE_PATH . '/Application/Home/View/default/Addons/preview.html');
 	}

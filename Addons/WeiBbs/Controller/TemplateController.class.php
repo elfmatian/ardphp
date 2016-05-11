@@ -1,8 +1,8 @@
 <?php
 
-namespace Addons\WeiSite\Controller;
+namespace Addons\\Controller;
 
-use Addons\WeiSite\Controller\BaseController;
+use Addons\\Controller\BaseController;
 
 class TemplateController extends BaseController {
 	function _initialize() {
@@ -12,27 +12,27 @@ class TemplateController extends BaseController {
 		$action = strtolower ( _ACTION );
 		
 		$res ['title'] = '首页模板';
-		$res ['url'] = addons_url ( 'WeiSite://template/index' );
+		$res ['url'] = addons_url ( 'WeiBbs://template/index' );
 		$res ['class'] = $action == 'index' ? 'cur' : '';
 		$nav [] = $res;
 		
 		$res ['title'] = '二级分类模板';
-		$res ['url'] = addons_url ( 'WeiSite://template/subcate' );
+		$res ['url'] = addons_url ( 'WeiBbs://template/subcate' );
 		$res ['class'] = $action == 'subcate' ? 'cur' : '';
 		$nav [] = $res;
 		
 		$res ['title'] = '图文列表模板';
-		$res ['url'] = addons_url ( 'WeiSite://template/lists' );
+		$res ['url'] = addons_url ( 'WeiBbs://template/lists' );
 		$res ['class'] = $action == 'lists' ? 'cur' : '';
 		$nav [] = $res;
 		
 		$res ['title'] = '图文内容模板';
-		$res ['url'] = addons_url ( 'WeiSite://template/detail' );
+		$res ['url'] = addons_url ( 'WeiBbs://template/detail' );
 		$res ['class'] = $action == 'detail' ? 'cur' : '';
 		$nav [] = $res;
 		
 		$res ['title'] = '底部菜单模板';
-		$res ['url'] = addons_url ( 'WeiSite://template/footer' );
+		$res ['url'] = addons_url ( 'WeiBbs://template/footer' );
 		$res ['class'] = $action == 'footer' ? 'cur' : '';
 		$nav [] = $res;
 		
@@ -42,7 +42,7 @@ class TemplateController extends BaseController {
 	// 首页模板
 	function index() {
 		// 使用提示
-		$normal_tips = '点击选中下面模板即可实时切换模板，请慎重点击。选择后可点击<a target="_blank" href="' . addons_url ( 'WeiSite://WeiSite/index' ) . '">这里</a>进行预览';
+		$normal_tips = '点击选中下面模板即可实时切换模板，请慎重点击。选择后可点击<a target="_blank" href="' . addons_url ( 'WeiBbs://WeiBbs/index' ) . '">这里</a>进行预览';
 		$this->assign ( 'normal_tips', $normal_tips );
 		
 		$this->_getTemplateByDir ();
@@ -109,7 +109,7 @@ class TemplateController extends BaseController {
 			
 			// 获取效果图
 			if (file_exists ( $dir . '/' . $file . '/info.php' )) {
-				$res ['icon'] = __ROOT__ . '/Addons/WeiSite/View/default/' . $type . '/' . $file . '/icon.png';
+				$res ['icon'] = __ROOT__ . '/Addons/WeiBbs/View/default/' . $type . '/' . $file . '/icon.png';
 			} else {
 				$res ['icon'] = ADDON_PUBLIC_PATH . '/default.png';
 			}
@@ -140,7 +140,7 @@ class TemplateController extends BaseController {
 				$res ['desc'] = $p ['tpldesinfo'];
 				
 				// 获取效果图
-				$res ['icon'] = __ROOT__ . '/Addons/WeiSite/View/default/pigcms/images/' . $p ['tplview'];
+				$res ['icon'] = __ROOT__ . '/Addons/WeiBbs/View/default/pigcms/images/' . $p ['tplview'];
 				
 				// 默认选中
 				if ($default == $p ['tpltypename']) {

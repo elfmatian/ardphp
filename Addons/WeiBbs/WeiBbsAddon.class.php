@@ -1,6 +1,6 @@
 <?php
 
-namespace Addons\WeiSite;
+namespace Addons\;
 use Common\Controller\Addon;
 
 /**
@@ -8,10 +8,10 @@ use Common\Controller\Addon;
  * @author 凡星
  */
 
-    class WeiSiteAddon extends Addon{
+    class Addon extends Addon{
 
         public $info = array(
-            'name'=>'WeiSite',
+            'name'=>'WeiBbs',
             'title'=>'微官网',
             'description'=>'微3G网站、支持分类管理，文章管理、底部导航管理、微信引导信息配置，微网站统计代码部署。同时支持首页多模板切换、信息列表多模板切换、信息详情模板切换、底部导航多模板切换。并配置有详细的模板二次开发教程',
             'status'=>1,
@@ -22,14 +22,14 @@ use Common\Controller\Addon;
         );
 
 	public function install() {
-		$install_sql = './Addons/WeiSite/install.sql';
+		$install_sql = './Addons/WeiBbs/install.sql';
 		if (file_exists ( $install_sql )) {
 			execute_sql_file ( $install_sql );
 		}
 		return true;
 	}
 	public function uninstall() {
-		$uninstall_sql = './Addons/WeiSite/uninstall.sql';
+		$uninstall_sql = './Addons/WeiBbs/uninstall.sql';
 		if (file_exists ( $uninstall_sql )) {
 			execute_sql_file ( $uninstall_sql );
 		}
