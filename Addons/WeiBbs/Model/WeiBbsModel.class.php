@@ -1,11 +1,11 @@
 <?php
 
-namespace Addons\\Model;
+namespace Addons\WeiBbs\Model;
 use Think\Model;
 
 /**
  * WeiSite模型
  */
-class Model extends Model{
+class WeiBbsModel extends Model{
 
 }

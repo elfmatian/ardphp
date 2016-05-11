@@ -1,6 +1,6 @@
 <?php
 
-namespace Addons\\Controller;
+namespace Addons\WeiBbs\Controller;
 
 use Home\Controller\AddonsController;
 

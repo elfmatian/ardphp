@@ -1,6 +1,6 @@
 <?php
 
-namespace Addons\;
+namespace Addons\WeiBbs;
 use Common\Controller\Addon;
 
 /**
@@ -8,7 +8,7 @@ use Common\Controller\Addon;
  * @author 凡星
  */
 
-    class Addon extends Addon{
+    class WeiBbsAddon extends Addon{
 
         public $info = array(
             'name'=>'WeiBbs',

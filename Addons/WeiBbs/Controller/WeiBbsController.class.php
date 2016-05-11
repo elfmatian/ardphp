@@ -1,8 +1,8 @@
 <?php
 
-namespace Addons\\Controller;
+namespace Addons\WeiBbs\Controller;
 
-use Addons\\Controller\BaseController;
+use Addons\WeiBbs\Controller\BaseController;
 
 class Controller extends BaseController {
 	function config() {

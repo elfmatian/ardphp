@@ -1,6 +1,6 @@
 <?php
 
-namespace Addons\\Model;
+namespace Addons\WeiBbs\Model;
 
 use Think\Model;
 
